@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Core.Models.Cliente>
+@{
+    ViewBag.Title = "Teste";
+}
+
+<h2>Seção de Teste</h2>
+
+<div>
+    @Html.Raw(ViewBag.Ola)
+</div>
+
+@foreach(var cliente in Model)
+{
+    <div>@Html.Hidden("Id", cliente.Id)</div>
+    <div>@Html.Label("txtNome", "Nome: ", 
+        new { text = "Nome:", @class="control-label" } )
+    </div>
+    <div>
+        @Html.DropDownListFor(c => cliente.Nome, new SelectList(Model, "id", "Nome"))
+    </div>
+    
+}
+<div>
+    @Html.DropDownList("Id", String.Empty)
+</div>
