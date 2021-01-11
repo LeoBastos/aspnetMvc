@@ -45,6 +45,10 @@ namespace Core.Controllers
         public ActionResult Create()
         {
             ViewBag.ListarClientes = _agendaService.ListarCliente();
+            ViewBag.ListarServicos = _agendaService.ListarServico();
+            ViewBag.ListarFormas = _agendaService.ListarFormas();
+            ViewBag.ListarTipos = _agendaService.ListarTipos();
+
             return View();
         }
 
@@ -53,9 +57,13 @@ namespace Core.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,DataAgendamento,HoraInicial,HoraFinal,Tipo,FormaPagamento")] Agenda agenda)
+        public ActionResult Create([Bind(Include = "Id,Nome,NomeServico,DataAgendamento,HoraInicial,HoraFinal,Tipo,FormaPagamento")] Agenda agenda)
         {
             ViewBag.ListarClientes = _agendaService.ListarCliente();
+            ViewBag.ListarServicos = _agendaService.ListarServico();
+            ViewBag.ListarFormas = _agendaService.ListarFormas();
+            ViewBag.ListarTipos = _agendaService.ListarTipos();
+
 
             if (ModelState.IsValid)
             {
